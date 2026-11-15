@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material Calculators | Cool Base Hardware – Siaya</title>
+  <meta name="description" content="Free construction material calculators: concrete blocks, concrete mix, roofing iron sheets, mortar and plaster. Estimate your Siaya build quantities.">
+  <meta property="og:title" content="Material Calculators | Cool Base Hardware – Siaya"><meta property="og:type" content="website">
+  <link rel="canonical" href="https://coolbasehardware.co.ke/calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":["LocalBusiness","Store"],"name":"Cool Base Hardware","address":{"@type":"PostalAddress","streetAddress":"Opposite Siaya Law Courts","addressLocality":"Siaya","addressRegion":"Siaya County","addressCountry":"KE"},"telephone":"+254708292558","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:30","closes":"18:30"}],"areaServed":"Siaya County"}</script>
+</head>
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="ticker" aria-label="Announcements" role="marquee" aria-live="off"></div>
+  <header id="site-header"></header>
+  <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+  <div id="toast" role="alert" aria-live="assertive" class="toast"></div>
+  <div id="mobile-bottom-bar" aria-label="Quick actions"></div>
+  <div id="floating-buttons" aria-label="Quick contact" aria-hidden="true"></div>
+  <main>
+
+    <section class="page-hero" aria-labelledby="calc-heading">
+      <div class="container">
+        <p class="eyebrow">Free Tools</p>
+        <h1 id="calc-heading">Material Calculators</h1>
+        <p class="page-hero-sub">Estimate the materials you need for your build. These are estimates only – we confirm exact quantities when you send your quote on WhatsApp.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="calc-tabs" role="tablist" aria-label="Calculator tabs">
+          <button class="calc-tab active" role="tab" aria-selected="true" aria-controls="tab-blocks" id="btn-blocks">🧱 Blocks</button>
+          <button class="calc-tab" role="tab" aria-selected="false" aria-controls="tab-concrete" id="btn-concrete">🏗️ Concrete Mix</button>
+          <button class="calc-tab" role="tab" aria-selected="false" aria-controls="tab-roofing" id="btn-roofing">🏠 Roofing</button>
+          <button class="calc-tab" role="tab" aria-selected="false" aria-controls="tab-mortar" id="btn-mortar">🪣 Mortar & Plaster</button>
+        </div>
+
+        <!-- TAB 1: BLOCKS -->
+        <div class="calc-panel active" role="tabpanel" id="tab-blocks" aria-labelledby="btn-blocks">
+          <h2 style="font-family:var(--font-heading);font-size:1.8rem;font-weight:300;text-transform:uppercase;margin-bottom:1.5rem">Concrete Block Calculator</h2>
+          <p style="color:var(--text-muted);margin-bottom:1.5rem">Estimates based on 10 blocks per m² wall area (450×225 mm face) with 5% wastage.</p>
+          <form class="calc-form" id="form-blocks" novalidate>
+            <label class="form-label" for="b-length">Wall Length (metres)</label>
+            <input class="form-input" type="number" id="b-length" min="0.1" step="0.1" placeholder="e.g. 20" required>
+            <label class="form-label" for="b-height">Wall Height (metres)</label>
+            <input class="form-input" type="number" id="b-height" min="0.1" step="0.1" placeholder="e.g. 3" required>
+            <label class="form-label" for="b-openings">Openings (doors + windows) in m² <span style="font-weight:400;text-transform:none">(enter 0 if none)</span></label>
+            <input class="form-input" type="number" id="b-openings" min="0" step="0.1" placeholder="e.g. 8" required>
+            <div style="display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-ghost" id="reset-blocks">Reset</button>
+            </div>
+          </form>
+          <div class="calc-result" id="result-blocks" style="display:none" aria-live="polite">
+            <div class="result-row"><span>Wall area (gross)</span><span class="result-val" id="r-b-gross">–</span></div>
+            <div class="result-row"><span>Openings deducted</span><span class="result-val" id="r-b-open">–</span></div>
+            <div class="result-row"><span>Net wall area</span><span class="result-val" id="r-b-net">–</span></div>
+            <div class="result-row" style="border:none;padding-top:.75rem"><span style="font-weight:700">Blocks needed (incl. 5% wastage)</span><span class="result-val" id="r-b-blocks" style="font-size:1.3rem">–</span></div>
+          </div>
+          <div class="calc-note">⚠ Estimates only. We confirm exact quantities on WhatsApp.</div>
+          <div class="calc-actions" id="actions-blocks" style="display:none">
+            <button class="btn-primary" id="add-blocks-btn">Add to Quote</button>
+            <a href="https://wa.me/254708292558" target="_blank" rel="noopener" class="btn-whatsapp">Send on WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- TAB 2: CONCRETE MIX -->
+        <div class="calc-panel" role="tabpanel" id="tab-concrete" aria-labelledby="btn-concrete">
+          <h2 style="font-family:var(--font-heading);font-size:1.8rem;font-weight:300;text-transform:uppercase;margin-bottom:1.5rem">Concrete Mix Calculator (1:2:4)</h2>
+          <p style="color:var(--text-muted);margin-bottom:1.5rem">Based on 1:2:4 mix ratio: 7 bags cement, 0.45 m³ sand, 0.9 m³ ballast per m³ of concrete.</p>
+          <form class="calc-form" id="form-concrete" novalidate>
+            <label class="form-label" for="c-length">Length (metres)</label>
+            <input class="form-input" type="number" id="c-length" min="0.01" step="0.01" placeholder="e.g. 10" required>
+            <label class="form-label" for="c-width">Width (metres)</label>
+            <input class="form-input" type="number" id="c-width" min="0.01" step="0.01" placeholder="e.g. 5" required>
+            <label class="form-label" for="c-thick">Thickness (metres)</label>
+            <input class="form-input" type="number" id="c-thick" min="0.01" step="0.001" placeholder="e.g. 0.15" required>
+            <div style="display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-ghost" id="reset-concrete">Reset</button>
+            </div>
+          </form>
+          <div class="calc-result" id="result-concrete" style="display:none" aria-live="polite">
+            <div class="result-row"><span>Volume of concrete</span><span class="result-val" id="r-c-vol">–</span></div>
+            <div class="result-row"><span>Cement bags (50 kg)</span><span class="result-val" id="r-c-cement">–</span></div>
+            <div class="result-row"><span>Building sand</span><span class="result-val" id="r-c-sand">–</span></div>
+            <div class="result-row" style="border:none"><span>Ballast (20 mm)</span><span class="result-val" id="r-c-ballast">–</span></div>
+          </div>
+          <div class="calc-note">⚠ Estimates only. We confirm exact quantities on WhatsApp.</div>
+          <div class="calc-actions" id="actions-concrete" style="display:none">
+            <button class="btn-primary" id="add-concrete-btn">Add All to Quote</button>
+            <a href="https://wa.me/254708292558" target="_blank" rel="noopener" class="btn-whatsapp">Send on WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- TAB 3: ROOFING -->
+        <div class="calc-panel" role="tabpanel" id="tab-roofing" aria-labelledby="btn-roofing">
+          <h2 style="font-family:var(--font-heading);font-size:1.8rem;font-weight:300;text-transform:uppercase;margin-bottom:1.5rem">Iron Sheet Calculator</h2>
+          <p style="color:var(--text-muted);margin-bottom:1.5rem">Based on 3 m iron sheets covering 2.4 m² effective area, with 8% added for overlap and wastage.</p>
+          <form class="calc-form" id="form-roofing" novalidate>
+            <label class="form-label" for="r-area">Total Roof Area (m²)</label>
+            <input class="form-input" type="number" id="r-area" min="1" step="0.1" placeholder="e.g. 80" required>
+            <div style="display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-ghost" id="reset-roofing">Reset</button>
+            </div>
+          </form>
+          <div class="calc-result" id="result-roofing" style="display:none" aria-live="polite">
+            <div class="result-row"><span>Roof area</span><span class="result-val" id="r-r-area">–</span></div>
+            <div class="result-row"><span>Sheets before wastage</span><span class="result-val" id="r-r-base">–</span></div>
+            <div class="result-row" style="border:none;padding-top:.75rem"><span style="font-weight:700">Iron sheets needed (incl. 8% wastage)</span><span class="result-val" id="r-r-sheets" style="font-size:1.3rem">–</span></div>
+          </div>
+          <div class="calc-note">⚠ Estimates only. We confirm exact quantities on WhatsApp.</div>
+          <div class="calc-actions" id="actions-roofing" style="display:none">
+            <button class="btn-primary" id="add-roofing-btn">Add to Quote</button>
+            <a href="https://wa.me/254708292558" target="_blank" rel="noopener" class="btn-whatsapp">Send on WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- TAB 4: MORTAR & PLASTER -->
+        <div class="calc-panel" role="tabpanel" id="tab-mortar" aria-labelledby="btn-mortar">
+          <h2 style="font-family:var(--font-heading);font-size:1.8rem;font-weight:300;text-transform:uppercase;margin-bottom:1.5rem">Mortar & Plaster Calculator</h2>
+          <p style="color:var(--text-muted);margin-bottom:1.5rem">Based on 12 mm plaster: 0.2 bags cement per m² and 0.02 m³ sand per m².</p>
+          <form class="calc-form" id="form-mortar" novalidate>
+            <label class="form-label" for="m-area">Wall Area to Plaster (m²)</label>
+            <input class="form-input" type="number" id="m-area" min="1" step="0.1" placeholder="e.g. 200" required>
+            <div style="display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap">
+              <button type="submit" class="btn-primary">Calculate</button>
+              <button type="button" class="btn-ghost" id="reset-mortar">Reset</button>
+            </div>
+          </form>
+          <div class="calc-result" id="result-mortar" style="display:none" aria-live="polite">
+            <div class="result-row"><span>Cement bags (50 kg)</span><span class="result-val" id="r-m-cement">–</span></div>
+            <div class="result-row" style="border:none"><span>Building sand</span><span class="result-val" id="r-m-sand">–</span></div>
+          </div>
+          <div class="calc-note">⚠ Estimates only. We confirm exact quantities on WhatsApp.</div>
+          <div class="calc-actions" id="actions-mortar" style="display:none">
+            <button class="btn-primary" id="add-mortar-btn">Add to Quote</button>
+            <a href="https://wa.me/254708292558" target="_blank" rel="noopener" class="btn-whatsapp">Send on WhatsApp</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta-band" aria-labelledby="calc-cta">
+      <div class="container text-center">
+        <h2 id="calc-cta">Need Help with Your Estimate?</h2>
+        <p style="color:var(--text-muted);margin-bottom:0">Send your project details on WhatsApp and we will help you put together a materials list.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/254708292558?text=Hello%20Cool%20Base%20Hardware%2C%20I%20need%20help%20estimating%20materials%20for%20my%20project." target="_blank" rel="noopener" class="btn-whatsapp">Chat on WhatsApp</a>
+          <a href="shop.html" class="btn-outline">Browse Products →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <footer id="site-footer"></footer>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Tab switching
+  var tabs = document.querySelectorAll('.calc-tab');
+  var panels = document.querySelectorAll('.calc-panel');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      panels.forEach(function(p){ p.classList.remove('active'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      var panelId = tab.getAttribute('aria-controls');
+      var panel = document.getElementById(panelId);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  function showError(inputEl, msg) {
+    inputEl.style.borderColor = '#e65050';
+    if (window.CBH_showToast) CBH_showToast(msg);
+    inputEl.focus();
+  }
+  function clearError(inputEl) { inputEl.style.borderColor = ''; }
+
+  // ── BLOCKS ──
+  var calcBlocksResult = { blocks: 0 };
+  document.getElementById('form-blocks').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var l = parseFloat(document.getElementById('b-length').value);
+    var h = parseFloat(document.getElementById('b-height').value);
+    var o = parseFloat(document.getElementById('b-openings').value);
+    if (isNaN(l)||l<=0) { showError(document.getElementById('b-length'),'Enter a valid wall length'); return; }
+    if (isNaN(h)||h<=0) { showError(document.getElementById('b-height'),'Enter a valid wall height'); return; }
+    if (isNaN(o)||o<0) { showError(document.getElementById('b-openings'),'Enter a valid openings value (0 or more)'); return; }
+    var gross = l * h;
+    var net = Math.max(0, gross - o);
+    var blocks = Math.ceil(net * 10 * 1.05);
+    calcBlocksResult.blocks = blocks;
+    document.getElementById('r-b-gross').textContent = gross.toFixed(2) + ' m²';
+    document.getElementById('r-b-open').textContent = o.toFixed(2) + ' m²';
+    document.getElementById('r-b-net').textContent = net.toFixed(2) + ' m²';
+    document.getElementById('r-b-blocks').textContent = blocks + ' blocks';
+    document.getElementById('result-blocks').style.display = 'block';
+    document.getElementById('actions-blocks').style.display = 'flex';
+  });
+  document.getElementById('reset-blocks').addEventListener('click', function() {
+    document.getElementById('form-blocks').reset();
+    document.getElementById('result-blocks').style.display = 'none';
+    document.getElementById('actions-blocks').style.display = 'none';
+  });
+  document.getElementById('add-blocks-btn').addEventListener('click', function() {
+    if (calcBlocksResult.blocks > 0 && window.CBH_addToQuote) {
+      CBH_addToQuote({ id:'cb-01', name:'Solid Concrete Blocks', unit:'block', qty: calcBlocksResult.blocks });
+    }
+  });
+
+  // ── CONCRETE ──
+  var calcConcreteResult = { cement:0, sandM3:0, ballastM3:0 };
+  document.getElementById('form-concrete').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var l = parseFloat(document.getElementById('c-length').value);
+    var w = parseFloat(document.getElementById('c-width').value);
+    var t = parseFloat(document.getElementById('c-thick').value);
+    if (isNaN(l)||l<=0) { showError(document.getElementById('c-length'),'Enter a valid length'); return; }
+    if (isNaN(w)||w<=0) { showError(document.getElementById('c-width'),'Enter a valid width'); return; }
+    if (isNaN(t)||t<=0) { showError(document.getElementById('c-thick'),'Enter a valid thickness'); return; }
+    var vol = l * w * t;
+    var cement = Math.ceil(vol * 7);
+    var sand = +(vol * 0.45).toFixed(2);
+    var ballast = +(vol * 0.9).toFixed(2);
+    calcConcreteResult = { cement: cement, sandM3: sand, ballastM3: ballast };
+    document.getElementById('r-c-vol').textContent = vol.toFixed(3) + ' m³';
+    document.getElementById('r-c-cement').textContent = cement + ' bags';
+    document.getElementById('r-c-sand').textContent = sand + ' m³';
+    document.getElementById('r-c-ballast').textContent = ballast + ' m³';
+    document.getElementById('result-concrete').style.display = 'block';
+    document.getElementById('actions-concrete').style.display = 'flex';
+  });
+  document.getElementById('reset-concrete').addEventListener('click', function() {
+    document.getElementById('form-concrete').reset();
+    document.getElementById('result-concrete').style.display = 'none';
+    document.getElementById('actions-concrete').style.display = 'none';
+  });
+  document.getElementById('add-concrete-btn').addEventListener('click', function() {
+    if (!window.CBH_addToQuote) return;
+    if (calcConcreteResult.cement > 0) CBH_addToQuote({ id:'bm-01', name:'Cement (50 kg bag)', unit:'bag', qty: calcConcreteResult.cement });
+    if (calcConcreteResult.sandM3 > 0) CBH_addToQuote({ id:'ca-01', name:'Building Sand', unit:'m³', qty: calcConcreteResult.sandM3 });
+    if (calcConcreteResult.ballastM3 > 0) CBH_addToQuote({ id:'ca-02', name:'Ballast', unit:'m³', qty: calcConcreteResult.ballastM3 });
+  });
+
+  // ── ROOFING ──
+  var calcRoofingResult = { sheets: 0 };
+  document.getElementById('form-roofing').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var area = parseFloat(document.getElementById('r-area').value);
+    if (isNaN(area)||area<=0) { showError(document.getElementById('r-area'),'Enter a valid roof area'); return; }
+    var base = area / 2.4;
+    var sheets = Math.ceil(base * 1.08);
+    calcRoofingResult.sheets = sheets;
+    document.getElementById('r-r-area').textContent = area.toFixed(2) + ' m²';
+    document.getElementById('r-r-base').textContent = Math.ceil(base) + ' sheets';
+    document.getElementById('r-r-sheets').textContent = sheets + ' sheets';
+    document.getElementById('result-roofing').style.display = 'block';
+    document.getElementById('actions-roofing').style.display = 'flex';
+  });
+  document.getElementById('reset-roofing').addEventListener('click', function() {
+    document.getElementById('form-roofing').reset();
+    document.getElementById('result-roofing').style.display = 'none';
+    document.getElementById('actions-roofing').style.display = 'none';
+  });
+  document.getElementById('add-roofing-btn').addEventListener('click', function() {
+    if (calcRoofingResult.sheets > 0 && window.CBH_addToQuote) {
+      CBH_addToQuote({ id:'bm-02', name:'Iron Sheets', unit:'sheet', qty: calcRoofingResult.sheets });
+    }
+  });
+
+  // ── MORTAR ──
+  var calcMortarResult = { cement:0, sandM3:0 };
+  document.getElementById('form-mortar').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var area = parseFloat(document.getElementById('m-area').value);
+    if (isNaN(area)||area<=0) { showError(document.getElementById('m-area'),'Enter a valid wall area'); return; }
+    var cement = Math.ceil(area * 0.2);
+    var sand = +(area * 0.02).toFixed(2);
+    calcMortarResult = { cement: cement, sandM3: sand };
+    document.getElementById('r-m-cement').textContent = cement + ' bags';
+    document.getElementById('r-m-sand').textContent = sand + ' m³';
+    document.getElementById('result-mortar').style.display = 'block';
+    document.getElementById('actions-mortar').style.display = 'flex';
+  });
+  document.getElementById('reset-mortar').addEventListener('click', function() {
+    document.getElementById('form-mortar').reset();
+    document.getElementById('result-mortar').style.display = 'none';
+    document.getElementById('actions-mortar').style.display = 'none';
+  });
+  document.getElementById('add-mortar-btn').addEventListener('click', function() {
+    if (!window.CBH_addToQuote) return;
+    if (calcMortarResult.cement > 0) CBH_addToQuote({ id:'bm-01', name:'Cement (50 kg bag)', unit:'bag', qty: calcMortarResult.cement });
+    if (calcMortarResult.sandM3 > 0) CBH_addToQuote({ id:'ca-01', name:'Building Sand', unit:'m³', qty: calcMortarResult.sandM3 });
+  });
+});
+  </script>
+</body>
+</html>

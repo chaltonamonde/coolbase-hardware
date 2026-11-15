@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Service & Coverage | Cool Base Hardware – Siaya</title>
+  <meta name="description" content="Cool Base Hardware delivers building materials, plumbing, and concrete blocks across Siaya town, Ugunja, Bondo, Ugenya, Yala, Usenge, Sega and nearby areas.">
+  <meta property="og:title" content="Delivery Service | Cool Base Hardware Siaya">
+  <meta property="og:description" content="Prompt, reliable delivery of construction supplies to your building site across Siaya County.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coolbasehardware.co.ke/delivery.html">
+  <link rel="canonical" href="https://coolbasehardware.co.ke/delivery.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "Store"],
+    "name": "Cool Base Hardware",
+    "telephone": "+254708292558",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Opposite Siaya Law Courts",
+      "addressLocality": "Siaya",
+      "addressRegion": "Siaya County",
+      "addressCountry": "KE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "07:30",
+        "closes": "18:30"
+      }
+    ],
+    "areaServed": ["Siaya Town", "Ugunja", "Bondo", "Ugenya", "Yala", "Usenge", "Sega", "Siaya County"]
+  }
+  </script>
+</head>
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="ticker" aria-label="Announcements" role="marquee" aria-live="off"></div>
+  <header id="site-header"></header>
+  <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+  <div id="toast" role="alert" aria-live="assertive" class="toast"></div>
+  <div id="mobile-bottom-bar" aria-label="Quick actions"></div>
+  <div id="floating-buttons" aria-label="Quick contact" aria-hidden="true"></div>
+
+  <main>
+    <section class="page-hero" aria-labelledby="del-heading">
+      <div class="container">
+        <p class="eyebrow">Site Delivery</p>
+        <h1 id="del-heading">Delivery Service</h1>
+        <p class="page-hero-sub">We supply and deliver construction materials, plumbing essentials, concrete aggregates, and blocks directly to your construction site in Siaya and surrounding towns.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container delivery-layout">
+        <div class="delivery-info">
+          <p class="eyebrow fade-in">Clear & Simple</p>
+          <h2 class="fade-in">How Delivery Works</h2>
+          <ol class="delivery-steps">
+            <li>
+              <strong>Send your quote request:</strong> Add items to your quote list on this site or send your Bill of Quantities (BOQ) directly on WhatsApp.
+            </li>
+            <li>
+              <strong>We confirm pricing & timeline:</strong> We provide transparent material pricing, check stock availability, and give you an exact delivery schedule for your location.
+            </li>
+            <li>
+              <strong>Dispatch to your site:</strong> Our transport team loads your materials and delivers directly to your site or home at the agreed hour.
+            </li>
+            <li>
+              <strong>Verify & pay:</strong> Inspect your materials upon delivery. Payment accepted via M-Pesa or cash <!-- TODO: confirm payment methods -->.
+            </li>
+          </ol>
+
+          <div class="delivery-note-card fade-in">
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--gold);">Timelines & Scheduling</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">For standard stock items in Siaya town, same-day or next-morning dispatch is our priority. Bulk aggregates and large custom concrete block batches are coordinated according to your project milestones.</p>
+          </div>
+
+          <div class="delivery-note-card fade-in">
+            <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--gold);">Minimum Orders & Access</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6;">Deliveries are executed by pickup, light truck, or lorry depending on bulk weight. Please ensure the delivery path to your site allows vehicular access.</p>
+          </div>
+        </div>
+
+        <div class="delivery-table-wrap">
+          <p class="eyebrow fade-in">Coverage Areas</p>
+          <h2 class="fade-in">Areas We Serve</h2>
+          <p style="color: var(--text-muted); margin-bottom: 1.25rem; font-size: 0.9rem;">
+            Delivery fees depend on distance and cargo volume. Contact us on WhatsApp for exact site delivery quotes. <!-- TODO: fill fees once confirmed -->
+          </p>
+          <table class="delivery-table" aria-label="Delivery areas and fees">
+            <thead>
+              <tr>
+                <th scope="col">Destination</th>
+                <th scope="col">Delivery Fee</th>
+                <th scope="col">Min. Order</th>
+              </tr>
+            </thead>
+            <tbody id="delivery-tbody">
+              <!-- Dynamically populated from data.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Check My Area Tool -->
+    <section class="section section-dark">
+      <div class="container text-center">
+        <p class="eyebrow" style="justify-content: center;">Instant Quote</p>
+        <h2 class="fade-in">Check Delivery to Your Site</h2>
+        <p class="section-sub fade-in">Building outside town? Enter your location or landmark below to instantly check delivery availability and request a fee estimate on WhatsApp.</p>
+        <div class="area-check-form fade-in">
+          <label for="area-input" class="sr-only">Your location or village</label>
+          <input type="text" id="area-input" class="form-input" placeholder="e.g. Ugunja, Bondo, Wagai, Nyadorera…" aria-label="Your town or location">
+          <button type="button" class="btn-whatsapp" id="area-check-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 2C6.477 2 2 6.477 2 12c0 1.738.449 3.37 1.236 4.788L2 22l5.339-1.21A9.954 9.954 0 0 0 11.998 22c5.523 0 10-4.477 10-10S17.52 2 11.998 2z"/></svg>
+            Check on WhatsApp
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Band -->
+    <section class="cta-band" aria-labelledby="del-cta">
+      <div class="container text-center">
+        <h2 id="del-cta">Need Materials on Site Tomorrow?</h2>
+        <p style="color: var(--text-muted); margin-bottom: 0;">Send your materials list on WhatsApp and get confirmation in minutes.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/254708292558?text=Hello%20Cool%20Base%20Hardware%2C%20I%20need%20a%20delivery%20quote%20for%20my%20site." target="_blank" rel="noopener" class="btn-whatsapp">
+            Chat on WhatsApp
+          </a>
+          <a href="shop.html" class="btn-primary">Browse Products &rarr;</a>
+          <a href="tel:+254708292558" class="btn-outline">Call 0708 292558</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var CBH = window.CBH || (typeof CBH !== 'undefined' ? CBH : null);
+    if (!CBH) return;
+
+    // Render delivery table from data.js
+    var tbody = document.getElementById('delivery-tbody');
+    if (tbody && CBH.deliveryAreas) {
+      tbody.innerHTML = CBH.deliveryAreas.map(function(item) {
+        return '\
+          <tr>\
+            <td><strong style="color: var(--text);">' + item.area + '</strong></td>\
+            <td><span style="color: var(--gold); font-weight: 600;">' + item.note + '</span></td>\
+            <td style="color: var(--text-muted);">' + item.minOrder + '</td>\
+          </tr>';
+      }).join('');
+    }
+
+    // Check my area button logic
+    var areaBtn = document.getElementById('area-check-btn');
+    var areaInput = document.getElementById('area-input');
+    if (areaBtn && areaInput) {
+      areaBtn.addEventListener('click', function() {
+        var area = areaInput.value.trim() || 'my site';
+        var message = 'Hello Cool Base Hardware, do you deliver to ' + area + '? Please let me know your delivery terms and fee estimate.';
+        window.open('https://wa.me/254708292558?text=' + encodeURIComponent(message), '_blank', 'noopener');
+      });
+      areaInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          areaBtn.click();
+        }
+      });
+    }
+  });
+  </script>
+</body>
+</html>
+

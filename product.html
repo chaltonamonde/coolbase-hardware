@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | Cool Base Hardware – Siaya</title>
+  <meta name="description" content="View product specifications, request pricing, and add to your quote list at Cool Base Hardware in Siaya town. Supply and delivery available.">
+  <meta property="og:title" content="Product Details | Cool Base Hardware">
+  <meta property="og:description" content="View product specifications and get a fast quote on WhatsApp from Cool Base Hardware, Siaya.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://coolbasehardware.co.ke/product.html">
+  <link rel="canonical" href="https://coolbasehardware.co.ke/product.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "Store"],
+    "name": "Cool Base Hardware",
+    "image": "https://coolbasehardware.co.ke/assets/img/og-image.jpg",
+    "telephone": "+254708292558",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Opposite Siaya Law Courts",
+      "addressLocality": "Siaya",
+      "addressRegion": "Siaya County",
+      "addressCountry": "KE"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "07:30",
+        "closes": "18:30"
+      }
+    ],
+    "areaServed": "Siaya County"
+  }
+  </script>
+</head>
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+  <div id="ticker" aria-label="Announcements" role="marquee" aria-live="off"></div>
+  <header id="site-header"></header>
+  <div id="drawer-overlay" class="drawer-overlay" aria-hidden="true"></div>
+  <div id="toast" role="alert" aria-live="assertive" class="toast"></div>
+  <div id="mobile-bottom-bar" aria-label="Quick actions"></div>
+  <div id="floating-buttons" aria-label="Quick contact" aria-hidden="true"></div>
+
+  <main>
+    <div class="container" style="padding-top: 1.5rem;">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="shop.html">Products</a>
+        <span aria-hidden="true">/</span>
+        <span id="bc-name" aria-current="page">Loading…</span>
+      </nav>
+    </div>
+
+    <section class="section product-detail-section" style="padding-top: 2rem;">
+      <div class="container product-detail-layout" id="product-detail">
+        <p style="color: var(--text-muted);">Loading product details…</p>
+      </div>
+    </section>
+
+    <section class="section section-dark" aria-labelledby="related-heading">
+      <div class="container">
+        <p class="eyebrow fade-in">Complete Your Project</p>
+        <h2 id="related-heading" class="fade-in">Related Items</h2>
+        <div class="product-grid" id="related-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var CBH = window.CBH || (typeof CBH !== 'undefined' ? CBH : null);
+    if (!CBH) return;
+
+    var params = new URLSearchParams(window.location.search);
+    var productId = params.get('id');
+    var product = productId ? CBH.products.find(function(p) { return p.id === productId; }) : null;
+
+    var detail = document.getElementById('product-detail');
+    var bcName = document.getElementById('bc-name');
+
+    if (!product) {
+      if (detail) {
+        detail.innerHTML = '\
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">\
+            <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Product Not Found</h1>\
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">The item you are searching for does not exist or may have been renamed.</p>\
+            <a href="shop.html" class="btn-primary">Browse All Products &rarr;</a>\
+          </div>';
+      }
+      if (bcName) bcName.textContent = 'Not Found';
+      return;
+    }
+
+    // Set page titles & metadata
+    document.title = product.name + ' | Cool Base Hardware – Siaya';
+    var metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', product.description + ' Available at Cool Base Hardware in Siaya town.');
+    if (bcName) bcName.textContent = product.name;
+
+    var cat = CBH.categories.find(function(c) { return c.id === product.category; }) || { color: 'var(--gold)', icon: '📦', label: product.category };
+    
+    // Specifications table
+    var specsHtml = '';
+    if (product.specs && Object.keys(product.specs).length > 0) {
+      specsHtml = '\
+        <div style="margin: 1.5rem 0;">\
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem; color: var(--gold);">Specifications</h3>\
+          <table class="product-specs-table"><tbody>' +
+          Object.entries(product.specs).map(function(entry) {
+            return '<tr><th>' + entry[0].charAt(0).toUpperCase() + entry[0].slice(1) + '</th><td>' + entry[1] + '</td></tr>';
+          }).join('') +
+          '</tbody></table>\
+        </div>';
+    }
+
+    var safeId = product.id;
+    var safeName = product.name.replace(/'/g, "\\'");
+    var safeUnit = product.unit.replace(/'/g, "\\'");
+    var priceText = product.price ? 'KSh ' + Number(product.price).toLocaleString() : 'Ask for price';
+    var imgSrc = product.img || '';
+
+    var mainImgHtml = imgSrc
+      ? '<img src="' + imgSrc + '" alt="' + product.name + '" loading="eager" onerror="console.warn(\'Image failed:\', this.src); this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\';">' +
+        '<div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;font-size:7rem;">' + cat.icon + '</div>'
+      : '<div role="img" aria-label="' + product.name + '">' + cat.icon + '</div>';
+
+    detail.innerHTML = '\
+      <div>\
+        <div class="product-img-large fade-in" role="img" aria-label="' + product.name + '">\
+          ' + mainImgHtml + '\
+        </div>\
+      </div>\
+      <div class="product-detail-info fade-in">\
+        <span class="cat-chip-sm" style="color:' + cat.color + '; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">' + cat.label + '</span>\
+        <h1 style="font-size: clamp(2rem, 5vw, 3.25rem); margin: 0.5rem 0 1rem; line-height: 1.15;">' + product.name + '</h1>\
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem;">' + product.description + '</p>\
+        ' + specsHtml + '\
+        <div style="display: flex; align-items: baseline; gap: 0.75rem; margin: 1.25rem 0 0.5rem;">\
+          <span class="ask-price" style="font-size: 1.6rem; font-weight: 700; color: var(--gold);">' + priceText + '</span>\
+          <span style="color: var(--text-muted); font-size: 0.95rem;">/ ' + product.unit + '</span>\
+        </div>\
+        <div style="margin-bottom: 1.5rem;">\
+          ' + (product.inStock ? '<span class="stock-badge">In Stock &bull; Ready for Delivery</span>' : '<span class="stock-badge" style="background: rgba(232, 116, 12, 0.15); color: #E8740C; border-color: rgba(232, 116, 12, 0.35);">Order Upon Request</span>') + '\
+        </div>\
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">\
+          <label for="qty-input" style="font-weight: 700; font-size: 0.85rem; text-transform: uppercase; color: var(--text-muted);">Quantity:</label>\
+          <div class="qty-selector" aria-label="Quantity selector">\
+            <button type="button" class="qty-btn" id="qty-dec" aria-label="Decrease quantity">&minus;</button>\
+            <input type="number" id="qty-input" class="qty-input" value="1" min="1" max="9999" aria-label="Quantity">\
+            <button type="button" class="qty-btn" id="qty-inc" aria-label="Increase quantity">+</button>\
+          </div>\
+          <span style="color: var(--text-muted); font-size: 0.9rem;">' + product.unit + (product.unit.endsWith('s') ? '' : '(s)') + '</span>\
+        </div>\
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">\
+          <button type="button" class="btn-primary" id="add-to-quote-btn">\
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg>\
+            Add to Quote List\
+          </button>\
+          <a href="https://wa.me/254708292558?text=Hello%20Cool%20Base%20Hardware%2C%20I%20would%20like%20to%20inquire%20about%20' + encodeURIComponent(product.name + (product.price ? ' (KSh ' + Number(product.price).toLocaleString() + ')' : '')) + '" target="_blank" rel="noopener" class="btn-whatsapp">\
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 2C6.477 2 2 6.477 2 12c0 1.738.449 3.37 1.236 4.788L2 22l5.339-1.21A9.954 9.954 0 0 0 11.998 22c5.523 0 10-4.477 10-10S17.52 2 11.998 2z"/></svg>\
+            Inquire on WhatsApp\
+          </a>\
+        </div>\
+      </div>';
+
+    // Quantity selectors
+    var qtyInput = document.getElementById('qty-input');
+    var qtyDec = document.getElementById('qty-dec');
+    var qtyInc = document.getElementById('qty-inc');
+    var addBtn = document.getElementById('add-to-quote-btn');
+
+    if (qtyDec && qtyInput) {
+      qtyDec.addEventListener('click', function() {
+        var current = parseInt(qtyInput.value) || 1;
+        if (current > 1) qtyInput.value = current - 1;
+      });
+    }
+
+    if (qtyInc && qtyInput) {
+      qtyInc.addEventListener('click', function() {
+        var current = parseInt(qtyInput.value) || 1;
+        qtyInput.value = current + 1;
+      });
+    }
+
+    if (addBtn && qtyInput) {
+      addBtn.addEventListener('click', function() {
+        var quantity = parseInt(qtyInput.value) || 1;
+        if (window.CBH_addToQuote) {
+          CBH_addToQuote({
+            id: safeId,
+            name: product.name,
+            unit: safeUnit,
+            price: product.price || null,
+            img: imgSrc,
+            qty: quantity
+          });
+        }
+      });
+    }
+
+    // Related Products (same category, excluding current product)
+    var related = CBH.products.filter(function(p) {
+      return p.category === product.category && p.id !== product.id;
+    }).slice(0, 4);
+
+    var relGrid = document.getElementById('related-grid');
+    if (relGrid) {
+      if (related.length > 0) {
+        relGrid.innerHTML = related.map(function(rp) {
+          var rcat = CBH.categories.find(function(c) { return c.id === rp.category; }) || { color: 'var(--gold)', icon: '📦', label: rp.category };
+          var rSafeId = rp.id;
+          var rSafeName = rp.name.replace(/'/g, "\\'");
+          var rSafeUnit = rp.unit.replace(/'/g, "\\'");
+          var rPrice = rp.price ? 'KSh ' + Number(rp.price).toLocaleString() : 'Ask for price';
+          var rImg = rp.img || '';
+          var rImgHtml = rImg
+            ? '<div class="product-img-wrap">' +
+                '<img src="' + rImg + '" alt="' + rp.name + '" class="product-img" loading="lazy" onerror="console.warn(\'Image failed:\', this.src); this.style.display=\'none\'; if(this.nextElementSibling) this.nextElementSibling.style.display=\'flex\';">' +
+                '<div class="product-img-fallback" style="display:none;" role="img" aria-label="' + rp.name + '">' + rcat.icon + '</div>' +
+                '<span class="product-cat-floating" style="color:' + rcat.color + ';border-color:' + rcat.color + '40">' + rcat.label + '</span>' +
+                '<span class="product-stock-floating">In Stock</span>' +
+              '</div>'
+            : '<div class="product-img-placeholder" role="img" aria-label="' + rp.name + '">' + rcat.icon + '</div>';
+
+          return '\
+            <article class="product-card fade-in" aria-label="' + rp.name + '">\
+              ' + rImgHtml + '\
+              <div class="product-body">\
+                <h3 class="product-name"><a href="product.html?id=' + rSafeId + '">' + rp.name + '</a></h3>\
+                <p class="product-unit">per ' + rp.unit + '</p>\
+                <div class="product-price-row"><span class="ask-price">' + rPrice + '</span></div>\
+                <div class="product-actions">\
+                  <button class="btn-primary btn-sm" onclick="CBH_addToQuote({id:\'' + rSafeId + '\',name:\'' + rSafeName + '\',unit:\'' + rSafeUnit + '\',price:' + (rp.price || 'null') + ',img:\'' + (rImg ? rImg.replace(/'/g, "\\'") : '') + '\',qty:1})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg> Add to Quote</button>\
+                  <a href="https://wa.me/254708292558?text=Hello%2C%20I%20would%20like%20to%20ask%20about%20' + encodeURIComponent(rp.name) + '" target="_blank" rel="noopener" class="btn-wa-sm" aria-label="WhatsApp"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.998 2C6.477 2 2 6.477 2 12c0 1.738.449 3.37 1.236 4.788L2 22l5.339-1.21A9.954 9.954 0 0 0 11.998 22c5.523 0 10-4.477 10-10S17.52 2 11.998 2z"/></svg></a>\
+                </div>\
+              </div>\
+            </article>';
+        }).join('');
+      } else {
+        relGrid.innerHTML = '<p style="color: var(--text-muted); grid-column: 1 / -1;">No other related items in this category. <a href="shop.html">Browse all products &rarr;</a></p>';
+      }
+    }
+
+    if (window.CBH_initScrollAnimations) {
+      window.CBH_initScrollAnimations();
+    }
+    if (window.CBH_initSuperPremiumCards) {
+      window.CBH_initSuperPremiumCards();
+    }
+  });
+  </script>
+</body>
+</html>
+

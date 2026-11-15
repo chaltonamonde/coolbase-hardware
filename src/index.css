@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark Slate Base */
+  --bg-deep: #07090E;
+  --bg-slate: #0C111C;
+  --bg-elevated: #121927;
+  --surface-card: rgba(18, 25, 39, 0.72);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  
+  /* Protective Coatings Warm Accents (Amber & Copper) */
+  --accent-amber: #F59E0B;
+  --accent-amber-light: #FDE68A;
+  --accent-copper: #E07A5F;
+  --accent-copper-dark: #C45D42;
+  --accent-emerald: #10B981;
+  
+  /* Typography */
+  --text-main: #F3F4F6;
+  --text-muted: #9CA3AF;
+  --text-dim: #6B7280;
+  
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-amber);
+}
+
+/* Metallic Text Gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-copper-gradient {
+  background: linear-gradient(135deg, #FDE68A 0%, #E07A5F 50%, #C45D42 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(18, 25, 39, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-panel-hover {
+  transition: transform 0.35s var(--ease-smooth), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 158, 11, 0.12);
+}
+
+/* Radar pulse animation for stock badges */
+@keyframes radarWave {
+  0% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
+  70% { transform: scale(1.15); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.9); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.radar-dot {
+  animation: radarWave 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
