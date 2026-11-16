@@ -206,3 +206,16 @@ h1, h2, h3, h4, h5, h6, .font-display {
   color: #FFFFFF;
   transform: translateY(-1.5px);
 }
+
+/* Reduced Motion Override for Accessibility (STEP 4) */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .floating-orb, .floating-orb-delayed, .radar-dot {
+    animation: none !important;
+  }
+}

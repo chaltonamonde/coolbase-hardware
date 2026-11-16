@@ -78,6 +78,12 @@ export default function Navbar({ quoteCount, onOpenQuote, onOpenCompanyProfile }
             Catalog
           </a>
           <a
+            href="#contact"
+            className="hover:text-[#F7CA68] transition-colors focus:outline-none focus-visible:text-[#F7CA68]"
+          >
+            Get Quote
+          </a>
+          <a
             href="#location"
             className="hover:text-[#F7CA68] transition-colors focus:outline-none focus-visible:text-[#F7CA68]"
           >
@@ -167,6 +173,13 @@ export default function Navbar({ quoteCount, onOpenQuote, onOpenCompanyProfile }
               className="py-2 hover:text-[#F7CA68] transition-colors"
             >
               Browse Hardware &amp; Materials
+            </a>
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 hover:text-[#F7CA68] transition-colors"
+            >
+              Direct Quote Form
             </a>
             <a
               href="#location"

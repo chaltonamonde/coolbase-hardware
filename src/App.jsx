@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import WalkthroughHero from './components/WalkthroughHero';
-import CategoryGrid from './components/CategoryGrid';
 import CompanyProfileSection from './components/CompanyProfileSection';
+import AnimatedStats from './components/AnimatedStats';
+import CategoryGrid from './components/CategoryGrid';
 import DuraCoatFeatures from './components/DuraCoatFeatures';
 import ProductCatalog from './components/ProductCatalog';
 import HowItWorks from './components/HowItWorks';
 import WhyChooseUs from './components/WhyChooseUs';
 import EstimatorAndDelivery from './components/EstimatorAndDelivery';
 import TestimonialsAndFaq from './components/TestimonialsAndFaq';
+import ContactForm from './components/ContactForm';
 import MapAndFinalCta from './components/MapAndFinalCta';
 import Footer from './components/Footer';
 import QuoteDrawer from './components/QuoteDrawer';
 import CompanyProfileModal from './components/CompanyProfileModal';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 export default function App() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
@@ -100,6 +103,9 @@ export default function App() {
         {/* Official Company Profile & Capabilities Dossier */}
         <CompanyProfileSection onOpenModal={() => setIsProfileOpen(true)} />
 
+        {/* Live Animated Key Performance Counters */}
+        <AnimatedStats />
+
         {/* Shop by Category Showcase */}
         <CategoryGrid onSelectCategory={handleSelectCategory} />
 
@@ -124,6 +130,9 @@ export default function App() {
         {/* Verified Customer Reviews & FAQ Accordion */}
         <TestimonialsAndFaq />
 
+        {/* Interactive Validated Contact / BOQ Request Portal */}
+        <ContactForm />
+
         {/* Final CTA & Google Maps Physical Showroom */}
         <MapAndFinalCta />
       </main>
@@ -146,6 +155,9 @@ export default function App() {
         isOpen={isProfileOpen}
         onClose={() => setIsProfileOpen(false)}
       />
+
+      {/* Persistent Floating WhatsApp Concierge Button */}
+      <FloatingWhatsApp />
     </div>
   );
 }
