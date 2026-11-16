@@ -30,30 +30,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="bg-[#05070B] text-slate-100 antialiased overflow-x-hidden selection:bg-[#E5A93C] selection:text-black">
-  <div id="root">
-    <!-- Local file protocol fallback in case user double clicks index.html in file explorer -->
-    <noscript>
-      <div style="font-family:sans-serif;background:#05070B;color:#F8FAFC;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;">
-        <div style="max-width:540px;background:#0A0E17;padding:36px;border-radius:18px;border:1px solid rgba(229,169,60,0.3);">
-          <h2 style="font-size:22px;color:#F7CA68;margin-bottom:12px;">JavaScript Required</h2>
-          <p style="color:#CBD5E1;font-size:14px;line-height:1.6;">Please enable JavaScript in your browser to experience the Cool Base DuraCoat Walkthrough.</p>
-        </div>
-      </div>
-    </noscript>
-  </div>
+  <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
-  <script>
-    // If user opens index.html directly as a file:// link in browser without a local server
-    if (window.location.protocol === 'file:') {
-      window.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          var root = document.getElementById('root');
-          if (root && (!root.firstElementChild || root.firstElementChild.tagName === 'NOSCRIPT')) {
-            root.innerHTML = '<div style="font-family:system-ui,-apple-system,sans-serif;background:#05070B;color:#F8FAFC;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;"><div style="max-width:540px;background:#0C121E;padding:36px 30px;border-radius:20px;border:1px solid rgba(229,169,60,0.35);box-shadow:0 25px 50px rgba(0,0,0,0.9);"><div style="width:52px;height:52px;border-radius:14px;background:rgba(229,169,60,0.15);border:1px solid rgba(229,169,60,0.4);display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px;">🚀</div><h2 style="font-size:20px;font-weight:700;color:#F7CA68;margin:0 0 10px;">Direct File Notice (Vite Project)</h2><p style="color:#CBD5E1;font-size:13px;line-height:1.6;margin:0 0 16px;">You opened <code>index.html</code> directly as a local <code>file://</code> link in your browser. Modern React + Vite applications use ES modules and JSX compilation, which browsers block when opened as raw files.</p><div style="background:#05070B;border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:14px;text-align:left;font-size:12px;font-family:monospace;color:#94A3B8;margin-bottom:16px;"><div># Run in your project terminal:</div><div style="color:#F7CA68;font-weight:bold;margin-top:4px;">npm run dev</div><div style="margin-top:8px;"># Or view the production preview:</div><div style="color:#F7CA68;font-weight:bold;margin-top:4px;">npm run preview</div></div><p style="color:#64748B;font-size:11px;margin:0;">The live website on Vercel is served compiled automatically.</p></div></div>';
-          }
-        }, 1000);
-      });
-    }
-  </script>
 </body>
 </html>

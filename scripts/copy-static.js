@@ -58,4 +58,4 @@ if (fs.existsSync(pdfSrc)) {
   fs.copyFileSync(pdfSrc, path.join(distDir, 'Cool_Base_Hardware_Company_Profile.pdf'));
 }
 
-console.log('Static pages and legacy assets copied successfully to dist/');
+console.log('Static pages and assets copied successfully to dist/');
