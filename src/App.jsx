@@ -81,7 +81,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#07090E] text-gray-100 selection:bg-amber-500 selection:text-black">
+    <div className="min-h-screen bg-[#05070B] text-slate-100 selection:bg-[#E5A93C] selection:text-black font-sans">
       {/* Navigation */}
       <Navbar
         quoteCount={quoteItems.reduce((acc, i) => acc + i.qty, 0)}

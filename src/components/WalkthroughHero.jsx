@@ -80,7 +80,7 @@ export default function WalkthroughHero({ onShopNow, onOpenCompanyProfile }) {
       {/* Pinned 100vh Stage */}
       <div
         ref={stageRef}
-        className="w-full h-screen overflow-hidden relative bg-[#07090E]"
+        className="w-full h-screen overflow-hidden relative bg-[#05070B]"
       >
         {/* Layer 1: Background Video / Canvas Walkthrough (Slowest, 1.0 -> 1.15 scale) */}
         <VideoStage

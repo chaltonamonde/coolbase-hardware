@@ -50,12 +50,12 @@ export default function EmergingEntrance({ progress = 0, isReducedMotion = false
           transition: 'transform 0.08s linear',
         }}
       >
-        <div className="w-full h-full bg-gradient-to-r from-[#07090E] via-[#0C111C]/90 to-transparent border-r border-amber-500/20 shadow-2xl flex flex-col justify-between py-12 px-3">
-          <div className="w-1.5 h-24 bg-gradient-to-b from-amber-500/80 to-transparent rounded-full" />
-          <div className="writing-mode-vertical text-[10px] font-bold uppercase tracking-[0.3em] text-amber-400/60 rotate-180">
+        <div className="w-full h-full bg-gradient-to-r from-[#05070B] via-[#090E17]/90 to-transparent border-r border-[#E5A93C]/20 shadow-2xl flex flex-col justify-between py-12 px-3">
+          <div className="w-1.5 h-24 bg-gradient-to-b from-[#E5A93C]/80 to-transparent rounded-full" />
+          <div className="writing-mode-vertical text-[10px] font-bold uppercase tracking-[0.3em] text-[#F7CA68]/60 rotate-180">
             Showroom Entrance
           </div>
-          <div className="w-1.5 h-16 bg-gradient-to-t from-amber-500/80 to-transparent rounded-full" />
+          <div className="w-1.5 h-16 bg-gradient-to-t from-[#E5A93C]/80 to-transparent rounded-full" />
         </div>
       </div>
 
@@ -69,12 +69,12 @@ export default function EmergingEntrance({ progress = 0, isReducedMotion = false
           transition: 'transform 0.08s linear',
         }}
       >
-        <div className="w-full h-full bg-gradient-to-l from-[#07090E] via-[#0C111C]/90 to-transparent border-l border-amber-500/20 shadow-2xl flex flex-col justify-between py-12 px-3 items-end">
-          <div className="w-1.5 h-24 bg-gradient-to-b from-amber-500/80 to-transparent rounded-full" />
-          <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-amber-400/60 rotate-90">
+        <div className="w-full h-full bg-gradient-to-l from-[#05070B] via-[#090E17]/90 to-transparent border-l border-[#E5A93C]/20 shadow-2xl flex flex-col justify-between py-12 px-3 items-end">
+          <div className="w-1.5 h-24 bg-gradient-to-b from-[#E5A93C]/80 to-transparent rounded-full" />
+          <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#F7CA68]/60 rotate-90">
             DuraCoat Centre
           </div>
-          <div className="w-1.5 h-16 bg-gradient-to-t from-amber-500/80 to-transparent rounded-full" />
+          <div className="w-1.5 h-16 bg-gradient-to-t from-[#E5A93C]/80 to-transparent rounded-full" />
         </div>
       </div>
 
@@ -82,7 +82,7 @@ export default function EmergingEntrance({ progress = 0, isReducedMotion = false
       <div
         className="absolute bottom-0 left-0 right-0 h-32 will-change-transform"
         style={{
-          background: 'linear-gradient(to top, rgba(245, 158, 11, 0.15) 0%, transparent 100%)',
+          background: 'linear-gradient(to top, rgba(229, 169, 60, 0.15) 0%, transparent 100%)',
           opacity: Math.max(0, 1 - entrancePhase * 1.5),
           transform: `scaleY(${1 + entrancePhase})`,
           transformOrigin: 'bottom',

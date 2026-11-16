@@ -202,28 +202,32 @@ const VideoStage = forwardRef(function VideoStage({ progress = 0, scale = 1.0, i
         className="absolute inset-0 pointer-events-none"
         style={{
           background: `
-            radial-gradient(circle at 50% 35%, rgba(7, 9, 14, 0.25) 0%, rgba(7, 9, 14, 0.65) 55%, rgba(7, 9, 14, 0.95) 100%),
-            linear-gradient(180deg, rgba(7, 9, 14, 0.85) 0%, rgba(7, 9, 14, 0.1) 25%, rgba(7, 9, 14, 0.2) 60%, rgba(7, 9, 14, 0.95) 100%)
+            radial-gradient(circle at 50% 35%, rgba(5, 7, 11, 0.20) 0%, rgba(5, 7, 11, 0.60) 55%, rgba(5, 7, 11, 0.95) 100%),
+            linear-gradient(180deg, rgba(5, 7, 11, 0.85) 0%, rgba(5, 7, 11, 0.08) 25%, rgba(5, 7, 11, 0.18) 60%, rgba(5, 7, 11, 0.98) 100%)
           `,
         }}
       />
 
+      {/* Subtle Architectural Ambient Light Orbs */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[300px] bg-[#E5A93C]/[0.04] rounded-full blur-[130px] pointer-events-none floating-orb" />
+      <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[300px] bg-[#E5A93C]/[0.03] rounded-full blur-[140px] pointer-events-none floating-orb-delayed" />
+
       {/* Subtle Architectural Construction Grid Texture */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-40 mix-blend-overlay"
+        className="absolute inset-0 pointer-events-none opacity-30 mix-blend-overlay"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(245, 158, 11, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(245, 158, 11, 0.05) 1px, transparent 1px)
+            linear-gradient(rgba(229, 169, 60, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(229, 169, 60, 0.04) 1px, transparent 1px)
           `,
-          backgroundSize: '48px 48px',
+          backgroundSize: '56px 56px',
         }}
       />
 
       {/* Loading State Pill (fades away as soon as metadata buffers) */}
       {!isVideoReady && (
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5 px-4 py-2 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-xs font-semibold text-gray-300">
-          <div className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+          <div className="w-2 h-2 rounded-full bg-[#E5A93C] animate-ping" />
           <span>Calibrating walkthrough stage…</span>
         </div>
       )}

@@ -51,7 +51,7 @@ export default function ParallaxMidground({ progress = 0, isReducedMotion = fals
           loading="lazy"
         />
         {/* Swappable placeholder indicator */}
-        <div className="mt-2 text-[10px] uppercase font-bold tracking-widest text-amber-400/80 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-full inline-block border border-amber-500/20">
+        <div className="mt-2 text-[10px] uppercase font-bold tracking-widest text-[#F7CA68] bg-black/60 backdrop-blur-sm px-2.5 py-0.5 rounded-full inline-block border border-[#E5A93C]/20">
           Roller & Tray Cutout
         </div>
       </div>
@@ -71,7 +71,7 @@ export default function ParallaxMidground({ progress = 0, isReducedMotion = fals
           className="w-full h-auto object-contain select-none"
           loading="lazy"
         />
-        <div className="mt-2 text-[10px] uppercase font-bold tracking-widest text-amber-400/80 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-full inline-block border border-amber-500/20">
+        <div className="mt-2 text-[10px] uppercase font-bold tracking-widest text-[#F7CA68] bg-black/60 backdrop-blur-sm px-2.5 py-0.5 rounded-full inline-block border border-[#E5A93C]/20">
           DuraCoat Can Cutout
         </div>
       </div>
@@ -91,21 +91,21 @@ export default function ParallaxMidground({ progress = 0, isReducedMotion = fals
           className="w-full h-auto object-contain select-none"
           loading="lazy"
         />
-        <div className="mt-1 text-[10px] uppercase font-bold tracking-widest text-amber-400/80 bg-black/60 backdrop-blur-sm px-2 py-0.5 rounded-full inline-block border border-amber-500/20">
+        <div className="mt-1 text-[10px] uppercase font-bold tracking-widest text-[#F7CA68] bg-black/60 backdrop-blur-sm px-2.5 py-0.5 rounded-full inline-block border border-[#E5A93C]/20">
           Hardware Tools Cutout
         </div>
       </div>
 
       {/* Floating Tint Swatches (Accenting DuraCoat Color Lab) */}
       <div
-        className="hidden lg:flex absolute left-[18%] bottom-[25%] flex-col gap-2 p-2.5 rounded-xl bg-black/60 backdrop-blur-md border border-white/10 will-change-transform shadow-2xl"
+        className="hidden lg:flex absolute left-[18%] bottom-[25%] flex-col gap-2 p-3 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 will-change-transform shadow-2xl"
         style={{
           transform: `translate3d(0, ${-100 * p}px, 0) scale(${0.9 + p * 0.15})`,
           opacity: p > 0.25 && p < 0.85 ? 0.9 : 0,
           transition: 'transform 0.1s linear',
         }}
       >
-        <span className="text-[9px] font-bold uppercase tracking-wider text-amber-400">DuraCoat RAL Tint Palette</span>
+        <span className="text-[9px] font-bold uppercase tracking-wider text-[#F7CA68]">DuraCoat RAL Tint Palette</span>
         <div className="flex gap-1.5">
           <div className="w-5 h-8 rounded-md bg-[#F59E0B] shadow-sm border border-white/20" title="Sunburst Amber" />
           <div className="w-5 h-8 rounded-md bg-[#E07A5F] shadow-sm border border-white/20" title="Terracotta Copper" />
